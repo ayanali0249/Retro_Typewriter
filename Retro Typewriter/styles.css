@@ -1,0 +1,660 @@
+/* Base styling */
+body {
+  background: #202020;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+  font-variant-ligatures: common-ligatures;
+}
+
+::selection {
+  background: #ff662e;
+  color: white;
+}
+
+body.suppress-transitions * {
+  transition: none !important;
+}
+
+.hidden,
+audio {
+  display: none !important;
+}
+
+/* Header */
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: #ff662e;
+  color: white;
+  z-index: 100000;
+  display: flex;
+  padding: 24px 32px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  font-family: 'GortonFont';
+}
+
+header .reveal-sidebar {
+  margin-right: 10px;
+  margin-top: -4px;
+  margin-bottom: -15px;
+}
+
+header .reveal-sidebar button:hover {
+  background: white;
+}
+
+header .left {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+header .right {
+  padding-right: 250px;
+  text-align: right;
+}
+
+header .right a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  margin: -24px 0;
+  padding: 24px 0;
+  margin-left: 2em;
+}
+
+header .spread {
+  position: absolute;
+  top: -80px;
+  right: 20px;
+  background: url(https://shifthappens.site/typewriter/images/book-spread.png);
+  background-size: 100% 100%;
+  width: 250px;
+  height: 191px;
+  transition: top 0.2s;
+  z-index: -1;
+}
+
+header .right:hover .spread {
+  top: -10px;
+  transition: top 0.5s;
+}
+
+body[data-sidebar-visible='true'] header {
+  left: 340px;
+}
+
+body[data-sidebar-visible='true'] .reveal-sidebar {
+  display: none;
+}
+
+/* Button */
+button {
+  text-transform: uppercase;
+  font-family: 'GortonFont';
+  background: #ffbca3;
+  border: 0;
+  padding: 0.6em 1em;
+  color: black;
+}
+
+button:hover {
+  background: #ff662e;
+}
+
+/* Sidebar (aside) */
+aside {
+  width: 340px;
+  top: 0;
+  bottom: 0;
+  background: white;
+  color: #3f3f3f;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10000;
+  height: 100vh;
+  display: none;
+}
+
+body[data-sidebar-visible='true'] aside {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar - Options */
+aside .options {
+  flex-grow: 0;
+  padding: 12px 24px 12px 15px;
+  background: #ff662e;
+}
+
+aside .options .more-options {
+  display: none;
+}
+
+aside .options.more-options-visible .more-options {
+  display: block;
+}
+
+aside .options .show-hide-more {
+  text-align: center;
+  padding: 5px 20px;
+  margin-right: 20px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+aside .options .show-hide-more:before {
+  content: 'Show more option';
+}
+
+aside .options.more-options-visible .show-hide-more:before {
+  content: 'Hide more option';
+}
+
+aside .options .show-hide-more:hover {
+  background: #ffffff;
+}
+
+aside .options .space {
+  display: inline-block;
+  width: 154px;
+  height: 30px;
+}
+
+/* Sidebar - Option buttons */
+aside .options button {
+  appearance: none;
+  border: 0;
+  background: none;
+  text-transform: uppercase;
+  font-family: 'GortonFont';
+  font-size: 14px;
+  width: 154px;
+  padding: 5px 10px;
+  margin-right: -4px;
+  display: inline-flex;
+  align-items: start;
+  flex-direction: row;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+aside .options button div {
+  flex-grow: 1;
+}
+
+aside .options button .key {
+  font-size: 10px;
+  flex-grow: 0;
+  margin-left: 5px;
+}
+
+aside .options button:hover {
+  background: white;
+}
+
+aside .options button:active {
+  background: #000000;
+}
+
+/* Sidebar - Page */
+aside .page {
+  border-top: 1px solid white;
+  padding: 0 24px 20px;
+  line-height: 1.4;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+aside .page p + .go-back,
+aside .page ul + .go-back {
+  margin-top: 40px;
+}
+
+aside .page a {
+  color: inherit;
+}
+
+aside .page ul {
+  padding-left: 0;
+}
+
+aside .page li {
+  margin-bottom: 0.5em;
+}
+
+aside .page img {
+  width: 100%;
+}
+
+/* Sidebar - Tasks */
+aside .tasks {
+  margin: 0;
+  padding: 0 0 20px;
+  list-style: none;
+}
+
+aside .tasks li {
+  font-weight: 500;
+  cursor: pointer;
+  padding-left: 24px;
+  padding-bottom: 10px;
+  background: url(https://shifthappens.site/typewriter/images/key-dark.png) no-repeat -10px -10px;
+  background-size: 40px 42px;
+}
+
+aside .tasks li:hover {
+  color: #ff662e;
+  background-image: url(https://shifthappens.site/typewriter/images/key.png);
+}
+
+aside .tasks li.separated {
+  margin-top: 30px;
+}
+
+/* Sidebar - Other Text Styles */
+aside p {
+  line-height: 160%;
+}
+
+aside h1 {
+  font-size: 100%;
+  padding-top: 0.5em;
+  margin-top: 2em;
+}
+
+aside .key {
+  border: 1.5px solid #3f3f3f;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.2em 0.4em;
+  background: white;
+  white-space: nowrap;
+}
+
+aside .example,
+aside .type {
+  background: #f0eff4;
+  color: #2c2c50;
+  font-family: 'Bohemian';
+}
+
+aside .example {
+  padding: 8px 12px;
+  margin-bottom: 50px;
+}
+
+aside .example button {
+  margin-top: 20px;
+}
+
+aside .example p {
+  margin: 0 0 0.4em 0.8em;
+}
+
+aside .type {
+  padding: 4px 6px;
+}
+
+/* Font Faces */
+@font-face {
+  font-family: 'BohemianTypewriter';
+  src: url('asset/BohemianTypewriter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GortonFont';
+  src: url('https://shifthappens.site/typewriter/fonts/Gorton.woff');
+}
+/* Keyboard Layout */
+.keyboard-layout {
+  background: #ff662e;
+  padding: 16px 24px;
+  padding-right: 0;
+}
+
+.keyboard-layout .typewriter-key {
+  background: white;
+  display: inline-flex;
+  align-items: end;
+  justify-content: center;
+  vertical-align: top;
+  width: 18px;
+  height: 37px;
+  padding-bottom: 5px;
+  margin-right: 5.5px;
+  margin-bottom: 5.5px;
+  border-radius: 4px 4px 12px 12px;
+  font-size: 14px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.keyboard-layout .typewriter-key.small-legend {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.keyboard-layout .typewriter-key.pressed {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 1px rgba(0, 0, 0, 0.5);
+  background: #e2e2e2;
+  padding-bottom: 3px;
+  height: 39px;
+}
+
+.keyboard-layout .typewriter-key:hover {
+  background: #f2f2f2;
+}
+
+/* Presentation and Typewriter */
+.presentation {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1480px;
+  background: black;
+  transform-origin: 0 0;
+  opacity: 1;
+}
+
+.presentation > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.presentation > div .typewriter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  overflow: hidden;
+}
+
+.paper {
+  font-family: 'BohemianTypewriter', monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #222;
+}
+
+.presentation > div .paper {
+  position: absolute;
+  left: -150vw;
+  right: -150vw;
+  top: -150vh;
+  bottom: -150vh;
+  background: url(https://shifthappens.site/typewriter/images/paper-texture-3.jpg);
+  background-size: 14px 24px;
+  background-repeat: repeat;
+  transform-origin: 50% 50%;
+  z-index: -1;
+  transition: background 0.1s, transform 0.1s;
+}
+
+.presentation > div .mystery-instructions-canvas {
+  position: absolute;
+  z-index: 2000000;
+  width: 1920px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'] {
+  background: #fbf9f6;
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'] img {
+  position: absolute;
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='0'] .typewriter {
+  transform: translateX(1920px);
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='1'] .mystery-instructions-canvas,
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='2'] .mystery-instructions-canvas {
+  transform: translateX(-480px);
+  width: 1440px;
+  transition: transform 1s, width 1s;
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='1'] .typewriter,
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='2'] .typewriter {
+  transition: transform 1s;
+  transform: translateX(480px);
+}
+
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='2'] .typewriter-chrome,
+.presentation > div[data-subslideid='mystery-from-instructions'][data-subslide='2'] .typewriter-chrome-alpha {
+  transition: transform 1s;
+  transform: translateY(480px);
+}
+
+/* Per-letter Adjustments */
+[data-letter='@'] { left: -0.2em; position: relative; }
+[data-letter='#'] { left: -0.1em; position: relative; }
+[data-letter='_'] { top: 0.1em; position: relative; }
+[data-letter="'"] { top: 0.15em; position: relative; }
+[data-letter='"'] { top: 0.15em; position: relative; }
+[data-letter='m'] { left: -0.1em; position: relative; }
+
+/* Letter Colors */
+[data-color='2'] { color: #dc3232 !important; }
+[data-color='3'] { color: #329632 !important; }
+[data-color='4'] { color: #3278aa !important; }
+[data-color='5'] { color: #b49632 !important; }
+[data-color='correcting'] { color: #efeef3 !important; }
+
+/* Witeout Effect */
+[data-witeout='true'] {
+  color: green !important;
+  opacity: 0.95;
+  background: white;
+}
+
+/* Visual Bell */
+.visual-bell-outer {
+  position: fixed;
+  left: 20px;
+  top: 100px;
+  right: 20px;
+  height: 5px;
+  z-index: 50000000;
+  pointer-events: none;
+}
+
+body[data-sidebar-visible='true'] .visual-bell-outer {
+  left: 390px;
+}
+
+.visual-bell {
+  background: black;
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -5px);
+  padding: 8px 16px;
+  text-align: center;
+  line-height: 140%;
+  opacity: 0;
+}
+
+.visual-bell .key {
+  border: 1.5px solid white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.2em 0.4em;
+  margin: 0 0.3em;
+}
+
+.visual-bell.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.visual-bell.invisible {
+  opacity: 0;
+  transform: translate(-50%, 5px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Slide Typewriter */
+.presentation > .slide-typewriter {
+  background: white;
+  user-select: none;
+}
+
+.presentation > .slide-typewriter * {
+  user-select: none;
+}
+
+.presentation > .slide-typewriter .typewriter-chrome {
+  left: 0;
+  bottom: 0;
+  background: url(https://shifthappens.site/typewriter/images/typewriter-simulator-down.png),
+              url(https://shifthappens.site/typewriter/images/typewriter-simulator-up.png);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  position: absolute;
+}
+
+.presentation > .slide-typewriter.typebar-up .typewriter-chrome {
+  background-image: url(https://shifthappens.site/typewriter/images/typewriter-simulator-up.png);
+}
+
+.presentation > .slide-typewriter .typewriter-chrome-alpha {
+  left: 0;
+  bottom: 0;
+  background: url(https://shifthappens.site/typewriter/images/typewriter-simulator-down-alpha.png),
+              url(https://shifthappens.site/typewriter/images/typewriter-simulator-up-alpha.png);
+  background-size: 100%, 0%;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 1200;
+  position: absolute;
+}
+
+.presentation > .slide-typewriter.typebar-up .typewriter-chrome-alpha {
+  background-image: url(https://shifthappens.site/typewriter/images/typewriter-simulator-up-alpha.png);
+}
+
+/* Letters Layout */
+.presentation > .slide-typewriter .letters {
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 610px;
+  left: 920px;
+  z-index: 1000;
+  transition: transform 1s;
+  transform-origin: 0 0;
+}
+
+.presentation > .slide-typewriter .letters-inner {
+  transition: transform 0.1s;
+}
+
+.presentation > .slide-typewriter .letters-inner.carriage-return {
+  transition: transform 0.5s ease-in;
+}
+
+.presentation > .slide-typewriter .letters-inner-inner {
+  transition: transform 0.1s;
+}
+
+.presentation > .slide-typewriter .letter {
+  font-family: 'Bohemian';
+  color: #2c2c50;
+  font-size: 21px;
+  line-height: 0.6;
+  width: 10.5px;
+  height: 18px;
+  position: absolute;
+}
+
+.presentation > .slide-typewriter .paper-header {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.presentation > .slide-typewriter .paper-header-inside {
+  width: 850.5px;
+  height: 49.5px;
+  z-index: -1;
+  background: url(https://shifthappens.site/typewriter/images/paper-header.png);
+  background-size: 850.5px 49.5px;
+}
+
+/* Zoom and Drag States */
+body.zoomed-out .typewriter-chrome,
+body.zoomed-out .typewriter-chrome-alpha {
+  display: none;
+}
+
+body.dragging-paper .presentation > .slide-typewriter .letters,
+body.dragging-paper .presentation > .slide-typewriter .letters-inner,
+body.dragging-paper .presentation > .slide-typewriter .letters-inner-inner,
+body.dragging-paper .presentation > .slide-typewriter .paper {
+  transition: none !important;
+}
+
+/* Warnings */
+.warning {
+  z-index: 100000;
+  background: black;
+  color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  outline: 10000px solid rgba(255, 255, 255, 0.75);
+  padding: 4em;
+  font-size: 24px;
+  text-align: center;
+  line-height: 140%;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.warning button {
+  font-size: 80%;
+}
+
+.warning.large {
+  font-size: 48px;
+  padding: 4em 2em;
+  width: 75vw;
+}

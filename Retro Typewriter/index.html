@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Retro Typewriter Simulator</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="images/favicon.png">
+
+  <script src="scripts.js"></script>
+
+  <link rel="preload" href="fonts/BohemianTypewriterSameWidth-Regular.woff" as="font" crossorigin="anonymous">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:image" content="https://shifthappens.site/typewriter/images/typewriter-simulator.jpg" />
+  <meta property="og:description" content="A fun way to experience a typewriter without needing to have one!" />
+  <meta property="og:title" content="Retro Typewriter Simulator" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mwichary">
+  <meta name="twitter:creator" content="@mwichary">
+  <meta name="twitter:description" content="A fun way to experience a typewriter without needing to have one!">
+  <meta name="twitter:image" content="https://shifthappens.site/typewriter/images/typewriter-simulator.jpg">
+</head>
+
+<body onload="onBodyLoad()">
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="page"></div>
+    <div class="keyboard-layout"></div>
+
+    <div class="options">
+      <button class="button-ribbon">
+        <div>Change ribbon</div>
+        <span class="key">F1</span>
+      </button>
+
+      <button class="button-zoom-out">
+        <div>Zoom out</div>
+        <span class="key">Esc</span>
+      </button>
+
+      <div class="more-options">
+        <button class="button-witeout">
+          <div>Apply Wite-out</div>
+          <span class="key">Del</span>
+        </button>
+
+        <button class="button-sidebar">
+          <div>Hide sidebar</div>
+          <span class="key">Tab</span>
+        </button>
+
+        <button class="button-left-margin">
+          Set left margin<br>
+          <span class="key">F3</span>
+        </button>
+
+        <div class="space"></div>
+
+        <button class="button-rotate-left">
+          Rotate left<br>
+          <span class="key">F5</span>
+        </button>
+
+        <div class="space"></div>
+
+        <button class="button-rotate-right">
+          Rotate right<br>
+          <span class="key">F6</span>
+        </button>
+
+        <button class="button-clear-page">
+          Clear page<br>
+          <span class="key">F10</span>
+        </button>
+      </div>
+
+      <div class="show-hide-more"></div>
+    </div>
+  </aside>
+
+  <!-- Visual Bell -->
+  <div class="visual-bell-outer"></div>
+
+  <!-- Typewriter Presentation -->
+  <div class="presentation">
+    <div class="slide-typewriter visible" data-text="">
+      <div class="typewriter">
+        <div class="letters">
+          <div class="letters-inner">
+            <div class="letters-inner-inner">
+              <!-- Letters go here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="paper"></div>
+
+        <!-- <div class="typewriter-chrome"></div> -->
+        <div class="typewriter-chrome-alpha"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript call -->
+  <script>
+    main();
+  </script>
+
+</body>
+
+</html>
